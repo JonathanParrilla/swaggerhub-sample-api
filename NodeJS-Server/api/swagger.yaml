@@ -1,0 +1,40 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a sample API"
+  version: "1.0.0"
+  title: "Sample API"
+host: "virtserver.swaggerhub.com"
+basePath: "/JonathanPa/Sample/1.0.0"
+schemes:
+- "https"
+paths:
+  /users/{userId}:
+    get:
+      summary: "Returns a user by ID"
+      operationId: "usersUserIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "The ID of the user to return"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        400:
+          description: "The specified user ID is invalid (e.g. not a number)"
+        404:
+          description: "A user with the specified ID was not found"
+      x-swagger-router-controller: "Default"
+definitions:
+  inline_response_200:
+    properties:
+      name:
+        type: "string"
+      id:
+        type: "integer"
